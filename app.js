@@ -3,6 +3,12 @@ var request = require('request');
 
 var app = express();
 
+app.use(express.static('public'));
+
+app.get('/ping', function(req, res) {
+	res.end('pong');
+});
+
 app.post('/jokes/chunked', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
     prepareChunkedResponse(req, res);
